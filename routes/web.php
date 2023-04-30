@@ -18,3 +18,4 @@ use Illuminate\Support\Facades\Route;
 // });
 
 Route::get('/p', [\App\Http\Controllers\IndexController::class, 'pdfGenerate'])->name('pdfgenerate');
+Route::get('/m', [\App\Http\Controllers\IndexController::class, 'mailSend'])->name('mailsend');
