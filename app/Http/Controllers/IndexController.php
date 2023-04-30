@@ -11,6 +11,11 @@ use App\Mail\SendDocument;
 
 class IndexController extends Controller
 {
+    public function index()
+    {
+        return view('pages.form');
+    }
+
     public function pdfGenerate()
     {
         $some_data = new PDFGenerator('Архитектурно правильный вариант работы программы.');
