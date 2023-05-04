@@ -4,11 +4,25 @@
 
 @section('content')
 
-<div class="container mt-5">
 
-    <form class="row g-3">
+<div class="container mt-5">
+<img src="https://mobimg.b-cdn.net/v3/fetch/c4/c493aac67877288476b0fc52d55f55cf.jpeg" alt="" width="300">
+
+<!-- <img src="assert('uploads/jcsCrDawH2.png) " alt="oleg" width="300"> -->
+
+<img src="/storage/uploads/0KlcOAyneI.png" alt="oleg" width="300">
+
+<!-- {{ route('index') }} -->
+
+    <form class="row g-3" action="{{ route('index') }}" enctype="multipart/form-data" method="POST">
 
         @csrf
+
+        <!-- <div class="valid-feedback">Good</div> -->
+        <!-- <div class="invalid-feedback">Bad</div> -->
+        <!-- required -->
+        <!-- input -> class -> is-valid -->
+        <!-- input -> class -> is-invflid -->
 
         <h5>Информация о выполненных услугах</h5>
 

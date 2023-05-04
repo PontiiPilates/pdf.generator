@@ -38,13 +38,14 @@ class PDFGenerator
     {
         $options = new Options();
         $options->set('defaultFont', 'DejaVu Sans');
+        $options->set('isRemoteEnabled', TRUE);
 
         // Instantiate and use the dompdf class
         $dompdf = new Dompdf($options);
         $dompdf->loadHtml($this->html);
 
         // (Optional) Setup the paper size and orientation
-        $dompdf->setPaper('A4', 'landscape');
+        $dompdf->setPaper('A4', 'portrait');
 
         // Render the HTML as PDF
         $dompdf->render();
@@ -55,6 +56,7 @@ class PDFGenerator
         // Output the generated PDF to File
         $file = $dompdf->output();
 
+        // сохранение файла на диск
         Storage::put("/public/pdf/$this->file_name.pdf", $file);
 
         return $this->file_name;

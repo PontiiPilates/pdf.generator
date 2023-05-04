@@ -13,19 +13,19 @@
     <div class="pt-5">
 
         @php
-        $services_file_logo = $names['services_file_logo'];
+        $services_file_logo = $uploads['services_file_logo'];
         $services_file_logo = asset("storage/uploads/$services_file_logo");
 
-        $executor_file_signature = $names['executor_file_signature'];
+        $executor_file_signature = $uploads['executor_file_signature'];
         $executor_file_signature = asset("storage/uploads/$executor_file_signature");
 
-        $executor_file_stamp = $names['executor_file_stamp'];
+        $executor_file_stamp = $uploads['executor_file_stamp'];
         $executor_file_stamp = asset("storage/uploads/$executor_file_stamp");
 
-        $customer_file_signature = $names['customer_file_signature'];
+        $customer_file_signature = $uploads['customer_file_signature'];
         $customer_file_signature = asset("storage/uploads/$customer_file_signature");
 
-        $customer_file_stamp = $names['customer_file_stamp'];
+        $customer_file_stamp = $uploads['customer_file_stamp'];
         $customer_file_stamp = asset("storage/uploads/$customer_file_stamp");
         @endphp
 
@@ -52,56 +52,56 @@
             </tr>
             <tr>
                 <td height="24px" style="width: 10%;">ИНН</td>
-                <td height="24px" style="width: 10%; padding-left: 12px; border-bottom: 1px solid black;">{{ $name ?? 'ИНН'}}</td>
+                <td height="24px" style="width: 10%; padding-left: 12px; border-bottom: 1px solid black;">{{ $data ?? 'ИНН'}}</td>
                 <td height="24px" style="width: 10%;" align="center">КПП</td>
-                <td height="24px" style="width: 10%; border-bottom: 1px solid black;" align="center">{{ $name ?? 'КПП'}}</td>
+                <td height="24px" style="width: 10%; border-bottom: 1px solid black;" align="center">{{ $data ?? 'КПП'}}</td>
                 <td height="24px" style="width: 10%;"></td>
                 <td height="24px" style="width: 10%;">ИНН</td>
-                <td height="24px" style="width: 10%; padding-left: 12px; border-bottom: 1px solid black;">{{ $name ?? 'ИНН контрагента'}}</td>
+                <td height="24px" style="width: 10%; padding-left: 12px; border-bottom: 1px solid black;">{{ $data ?? 'ИНН контрагента'}}</td>
                 <td height="24px" style="width: 10%;" align="center">КПП</td>
-                <td height="24px" style="width: 10%; border-bottom: 1px solid black;" align="center">{{ $name ?? 'КПП контрагента'}}</td>
+                <td height="24px" style="width: 10%; border-bottom: 1px solid black;" align="center">{{ $data ?? 'КПП контрагента'}}</td>
             </tr>
             <tr>
                 <td height="24px">Адрес</td>
-                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $name ?? 'Адрес для документов'}}</td>
+                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $data ?? 'Адрес для документов'}}</td>
                 <td height="24px"></td>
                 <td height="24px">Адрес</td>
-                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $name ?? 'Адрес контрагента'}}</td>
+                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $data ?? 'Адрес контрагента'}}</td>
             </tr>
             <tr>
                 <td height="24px">Р/с</td>
-                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $name ?? 'Расчетный счет'}}</td>
+                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $data ?? 'Расчетный счет'}}</td>
                 <td height="24px"></td>
                 <td height="24px">Р/с</td>
-                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $name ?? 'Расчетный счет контрагента'}}</td>
+                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $data ?? 'Расчетный счет контрагента'}}</td>
             </tr>
             <tr>
                 <td height="24px">К/с</td>
-                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $name ?? 'Корр. счет'}}</td>
+                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $data ?? 'Корр. счет'}}</td>
                 <td height="24px"></td>
                 <td height="24px">К/с</td>
-                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $name ?? 'Корр. счет контрагента'}}</td>
+                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $data ?? 'Корр. счет контрагента'}}</td>
             </tr>
             <tr>
                 <td height="24px">Банк</td>
-                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $name ?? 'Наименование банка и города банка'}}</td>
+                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $data ?? 'Наименование банка и города банка'}}</td>
                 <td height="24px"></td>
                 <td height="24px">Банк</td>
-                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $name ?? 'Наименование банка контрагента'}}</td>
+                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $data ?? 'Наименование банка контрагента'}}</td>
             </tr>
             <tr>
                 <td height="24px">БИК</td>
-                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $name ?? 'БИК'}}</td>
+                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $data ?? 'БИК'}}</td>
                 <td height="24px"></td>
                 <td height="24px">БИК</td>
-                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $name ?? 'БИК банка контрагента'}}</td>
+                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $data ?? 'БИК банка контрагента'}}</td>
             </tr>
             <tr>
                 <td height="24px">Телефон</td>
-                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $name ?? 'Телефон'}}</td>
+                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $data ?? 'Телефон'}}</td>
                 <td height="24px"></td>
                 <td height="24px">Телефон</td>
-                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $name ?? 'Телефон контрагента'}}а</td>
+                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $data ?? 'Телефон контрагента'}}а</td>
             </tr>
             <tr>
                 <td height="75px" style="width: 10%; border-bottom: 1px solid black; position: relative;">
@@ -109,14 +109,14 @@
                     <div class="stamp" style="background-image: url({{ $executor_file_stamp }});"></div>
                 </td>
                 <td height="75px" style="width: 10%;"></td>
-                <td height="75px" colspan="2" style="width: 10%; border-bottom: 1px solid black;" align="center" valign="bottom">{{ $name ?? 'ФИО для подписи'}}</td>
+                <td height="75px" colspan="2" style="width: 10%; border-bottom: 1px solid black;" align="center" valign="bottom">{{ $data ?? 'ФИО для подписи'}}</td>
                 <td height="75px" style="width: 10%;"></td>
                 <td height="75px" style="width: 10%; border-bottom: 1px solid black; position: relative;">
                     <div class="signature" style="background-image: url({{ $customer_file_signature }});"></div>
                     <div class="stamp" style="background-image: url({{ $customer_file_stamp }});"></div>
                 </td>
                 <td height="75px" style="width: 10%;"></td>
-                <td height="75px" colspan="2" style="width: 10%; border-bottom: 1px solid black;" align="center" valign="bottom">{{ $name ?? 'ФИО контрагента для подписи'}}</td>
+                <td height="75px" colspan="2" style="width: 10%; border-bottom: 1px solid black;" align="center" valign="bottom">{{ $data ?? 'ФИО контрагента для подписи'}}</td>
             </tr>
             <tr>
                 <td height="24px" style="width: 10%;"></td>
