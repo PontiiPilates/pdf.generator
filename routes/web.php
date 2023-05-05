@@ -13,11 +13,11 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+// возвращает главную страницу
+Route::get('/', [\App\Http\Controllers\GeneralController::class, 'index'])->name('getGeneral');
 
-Route::match(['get', 'post'], '/', [\App\Http\Controllers\IndexController::class, 'index'])->name('index');
+// отправляет форму на главную страницу
+Route::post('/', [\App\Http\Controllers\GeneralController::class, 'send'])->name('sendGeneral');
 
-Route::get('/p', [\App\Http\Controllers\IndexController::class, 'pdfGenerate'])->name('pdfgenerate');
-Route::get('/m', [\App\Http\Controllers\IndexController::class, 'mailSend'])->name('mailsend');
+Route::get('/p', [\App\Http\Controllers\GeneralController::class, 'pdfGenerate'])->name('pdfgenerate');
+Route::get('/m', [\App\Http\Controllers\GeneralController::class, 'mailSend'])->name('mailsend');

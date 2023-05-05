@@ -12,111 +12,94 @@
 
     <div class="pt-5">
 
-        @php
-        $services_file_logo = $uploads['services_file_logo'];
-        $services_file_logo = asset("storage/uploads/$services_file_logo");
+        <div class="logo" style="background-image: url({{ asset('storage/uploads/' . $services_file_logo) }});"></div>
 
-        $executor_file_signature = $uploads['executor_file_signature'];
-        $executor_file_signature = asset("storage/uploads/$executor_file_signature");
+        <h6 class="text-center mt-3 pb-2" style="border-bottom: 1px solid black;">АКТ № {{ $validated['services_act_number'] ?? 'Номер документа' }} от {{ $validated['cervices_act_date'] ?? 'Дата документа' }} </h6>
 
-        $executor_file_stamp = $uploads['executor_file_stamp'];
-        $executor_file_stamp = asset("storage/uploads/$executor_file_stamp");
+        <p>Исполнитель: <b>Индивидуальный предприниматель {{ $validated['services_executor'] ?? 'ФИО ИП'}}</b></p>
 
-        $customer_file_signature = $uploads['customer_file_signature'];
-        $customer_file_signature = asset("storage/uploads/$customer_file_signature");
+        <p>Заказчик: <b>{{ $validated['customer_company_name'] ?? 'Название компании'}}</b></p>
 
-        $customer_file_stamp = $uploads['customer_file_stamp'];
-        $customer_file_stamp = asset("storage/uploads/$customer_file_stamp");
-        @endphp
-
-        <div class="logo" style="background-image: url({{ $services_file_logo }});"></div>
-
-        <h6 class="text-center mt-3 pb-2" style="border-bottom: 1px solid black;">АКТ № {{ $data ?? 'Номер документа' }} от {{ $data ?? 'Дата документа' }} </h6>
-
-        <p>Исполнитель: <b>Индивидуальный предприниматель {{ $data ?? 'ФИО ИП'}}</b></p>
-
-        <p>Заказчик: <b>{{ $data ?? 'Название компании'}}</b></p>
-
-        <p>{{ $data ?? 'Наименование услуги' }} — {{ $data ?? 'Сумма цифрами' }}</p>
+        <p>{{ $validated['services_services_name'] ?? 'Наименование услуги' }} — {{ $validated[''] ?? 'Сумма цифрами' }}</p>
 
 
-        <p class="mt-5">Общая стоимость выполненных работ, оказанных услуг: {{ $data ?? 'Сумма полностью' }}</p>
+        <p class="mt-5">Общая стоимость выполненных работ, оказанных услуг: {{ $validated['services_cost'] ?? 'Сумма полностью' }}</p>
 
-        <p>{{ $data ?? 'Адрес почты' }}</p>
+        <p>{{ $validated['executor_adress'] ?? 'Адрес почты' }}</p>
 
         <table style="width: 100%">
             <tr>
-                <td height="24px" style="width: 10%;" colspan="4">Исполнитель: <b>ИП {{ $data ?? 'ФИО ИП' }}</b></td>
+                <td height="24px" style="width: 10%;" colspan="4">Исполнитель: <b>ИП {{ $validated['executor_company_name'] ?? 'ФИО ИП' }}</b></td>
                 <td height="24px" style="width: 10%;"></td>
-                <td height="24px" style="width: 10%;" colspan="4">Заказчик: <b>{{ $data ?? 'Название контрагента' }}</b></td>
+                <td height="24px" style="width: 10%;" colspan="4">Заказчик: <b>{{ $validated['customer_company_name'] ?? 'Название контрагента' }}</b></td>
             </tr>
             <tr>
                 <td height="24px" style="width: 10%;">ИНН</td>
-                <td height="24px" style="width: 10%; padding-left: 12px; border-bottom: 1px solid black;">{{ $data ?? 'ИНН'}}</td>
+                <td height="24px" style="width: 10%; padding-left: 12px; border-bottom: 1px solid black;">{{ $validated['executor_inn'] ?? 'ИНН'}}</td>
                 <td height="24px" style="width: 10%;" align="center">КПП</td>
-                <td height="24px" style="width: 10%; border-bottom: 1px solid black;" align="center">{{ $data ?? 'КПП'}}</td>
+                <td height="24px" style="width: 10%; border-bottom: 1px solid black;" align="center">{{ $validated['executir_kpp'] ?? 'КПП'}}</td>
                 <td height="24px" style="width: 10%;"></td>
                 <td height="24px" style="width: 10%;">ИНН</td>
-                <td height="24px" style="width: 10%; padding-left: 12px; border-bottom: 1px solid black;">{{ $data ?? 'ИНН контрагента'}}</td>
+                <td height="24px" style="width: 10%; padding-left: 12px; border-bottom: 1px solid black;">{{ $validated['customer_inn'] ?? 'ИНН контрагента'}}</td>
                 <td height="24px" style="width: 10%;" align="center">КПП</td>
-                <td height="24px" style="width: 10%; border-bottom: 1px solid black;" align="center">{{ $data ?? 'КПП контрагента'}}</td>
+                <td height="24px" style="width: 10%; border-bottom: 1px solid black;" align="center">{{ $validated['customer_kpp'] ?? 'КПП контрагента'}}</td>
             </tr>
             <tr>
                 <td height="24px">Адрес</td>
-                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $data ?? 'Адрес для документов'}}</td>
+                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $validated['executor_adress'] ?? 'Адрес для документов'}}</td>
                 <td height="24px"></td>
                 <td height="24px">Адрес</td>
-                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $data ?? 'Адрес контрагента'}}</td>
+                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $validated['customer_arderss'] ?? 'Адрес контрагента'}}</td>
             </tr>
             <tr>
                 <td height="24px">Р/с</td>
-                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $data ?? 'Расчетный счет'}}</td>
+                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $validated['executor_payment_account'] ?? 'Расчетный счет'}}</td>
                 <td height="24px"></td>
                 <td height="24px">Р/с</td>
-                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $data ?? 'Расчетный счет контрагента'}}</td>
+                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $validated['customer_payment_account'] ?? 'Расчетный счет контрагента'}}</td>
             </tr>
             <tr>
                 <td height="24px">К/с</td>
-                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $data ?? 'Корр. счет'}}</td>
+                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $validated['executor_correspondent_account'] ?? 'Корр. счет'}}</td>
                 <td height="24px"></td>
                 <td height="24px">К/с</td>
-                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $data ?? 'Корр. счет контрагента'}}</td>
+                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $validated['customer_correspondent_account'] ?? 'Корр. счет контрагента'}}</td>
             </tr>
             <tr>
                 <td height="24px">Банк</td>
-                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $data ?? 'Наименование банка и города банка'}}</td>
+                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $validated['executor_bank'] ?? 'Наименование банка и города банка'}}</td>
                 <td height="24px"></td>
                 <td height="24px">Банк</td>
-                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $data ?? 'Наименование банка контрагента'}}</td>
+                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $validated['customer_bank'] ?? 'Наименование банка контрагента'}}</td>
             </tr>
             <tr>
                 <td height="24px">БИК</td>
-                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $data ?? 'БИК'}}</td>
+                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $validated['executor_bank_bik'] ?? 'БИК'}}</td>
                 <td height="24px"></td>
                 <td height="24px">БИК</td>
-                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $data ?? 'БИК банка контрагента'}}</td>
+                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $validated['customer_bank_bik'] ?? 'БИК банка контрагента'}}</td>
             </tr>
             <tr>
                 <td height="24px">Телефон</td>
-                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $data ?? 'Телефон'}}</td>
+                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $validated['executor_phone'] ?? 'Телефон'}}</td>
                 <td height="24px"></td>
                 <td height="24px">Телефон</td>
-                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $data ?? 'Телефон контрагента'}}а</td>
+                <td height="24px" colspan="3" style="padding-left: 12px; border-bottom: 1px solid black;">{{ $validated['customer_bank_phone'] ?? 'Телефон контрагента'}}а</td>
             </tr>
             <tr>
                 <td height="75px" style="width: 10%; border-bottom: 1px solid black; position: relative;">
-                    <div class="signature" style="background-image: url({{ $executor_file_signature }});"></div>
-                    <div class="stamp" style="background-image: url({{ $executor_file_stamp }});"></div>
+                    <div class="signature" style="background-image: url({{ asset('storage/uploads/' . $executor_file_signature) }});"></div>
+                    <div class="stamp" style="background-image: url({{ asset('storage/uploads/' . $executor_file_stamp) }});"></div>
                 </td>
                 <td height="75px" style="width: 10%;"></td>
-                <td height="75px" colspan="2" style="width: 10%; border-bottom: 1px solid black;" align="center" valign="bottom">{{ $data ?? 'ФИО для подписи'}}</td>
+                <td height="75px" colspan="2" style="width: 10%; border-bottom: 1px solid black;" align="center" valign="bottom">{{ $validated['executor_name'] ?? 'ФИО для подписи'}}</td>
                 <td height="75px" style="width: 10%;"></td>
                 <td height="75px" style="width: 10%; border-bottom: 1px solid black; position: relative;">
-                    <div class="signature" style="background-image: url({{ $customer_file_signature }});"></div>
-                    <div class="stamp" style="background-image: url({{ $customer_file_stamp }});"></div>
+                    <div class="signature" style="background-image: url({{ asset('storage/uploads/' . $customer_file_signature) }});"></div>
+                    <div class="stamp" style="background-image: url({{ asset('storage/uploads/' . $customer_file_stamp) }});"></div>
                 </td>
                 <td height="75px" style="width: 10%;"></td>
-                <td height="75px" colspan="2" style="width: 10%; border-bottom: 1px solid black;" align="center" valign="bottom">{{ $data ?? 'ФИО контрагента для подписи'}}</td>
+                <td height="75px" colspan="2" style="width: 10%; border-bottom: 1px solid black;" align="center" valign="bottom">{{ $validated['customer_name'] ?? 'ФИО контрагента для подписи'}}</td>
             </tr>
             <tr>
                 <td height="24px" style="width: 10%;"></td>

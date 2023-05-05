@@ -5,27 +5,15 @@ namespace App\Services;
 use Illuminate\Support\Str;
 
 /**
- * Сохраняет принятый файл в заранее подготовленное хранилище.
+ * Сохраняет принятый файл.
  */
 class Uploader
 {
-    public $uploads;
-    public $names;
-
-    public function __construct()
+    public static function upload($file)
     {
-        $this->uploads = config('pdfGenerator.uploads');
-        $this->names = [];
-    }
-
-    public function upload($request, $name)
-    {
-        $file_name = Str::random(10) . '.' . $request->$name->extension();
-        $request->$name->storeAs($this->uploads, $file_name);
-        $this->names[$name] = $file_name;
-    }
-
-    public function getFiles() {
-        return $this->names;
+        $path = config('pdfGenerator.uploads');                     // путь к директории загрузки файла
+        $file_name = Str::random(10) . '.' . $file->extension();    // генерация имени файла
+        $file->storeAs($path, $file_name);                          // перемещение файла
+        return $file_name;                                          // возвращает имя файла
     }
 }
