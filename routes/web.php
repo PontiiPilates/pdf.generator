@@ -18,6 +18,3 @@ Route::get('/', [\App\Http\Controllers\GeneralController::class, 'index'])->name
 
 // отправляет форму на главную страницу
 Route::post('/', [\App\Http\Controllers\GeneralController::class, 'send'])->name('sendGeneral');
-
-Route::get('/p', [\App\Http\Controllers\GeneralController::class, 'pdfGenerate'])->name('pdfgenerate');
-Route::get('/m', [\App\Http\Controllers\GeneralController::class, 'mailSend'])->name('mailsend');

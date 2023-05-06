@@ -11,9 +11,8 @@
 <body>
 
     <div class="pt-5">
-        {{ asset('public/storage/uploads/' . $services_file_logo) }}
-
-        <div class="logo" style="background-image: url({{ asset('public/storage/uploads/' . $services_file_logo) }});"></div>
+        
+        <div class="logo" style="background-image: url({{ asset('storage/uploads/' . $services_file_logo) }});"></div>
 
         <h6 class="text-center mt-3 pb-2" style="border-bottom: 1px solid black;">АКТ № {{ $validated['services_act_number'] ?? 'Номер документа' }} от {{ $validated['cervices_act_date'] ?? 'Дата документа' }} </h6>
 
@@ -89,15 +88,15 @@
             </tr>
             <tr>
                 <td height="75px" style="width: 10%; border-bottom: 1px solid black; position: relative;">
-                    <div class="signature" style="background-image: url({{ 'public/storage/uploads/' . $executor_file_signature }});"></div>
-                    <div class="stamp" style="background-image: url({{ 'public/storage/uploads/' . $executor_file_stamp }});"></div>
+                    <div class="signature" style="background-image: url({{ asset('storage/uploads/' . $executor_file_signature) }});"></div>
+                    <div class="stamp" style="background-image: url({{ asset('storage/uploads/' . $executor_file_stamp) }});"></div>
                 </td>
                 <td height="75px" style="width: 10%;"></td>
                 <td height="75px" colspan="2" style="width: 10%; border-bottom: 1px solid black;" align="center" valign="bottom">{{ $validated['executor_name'] ?? 'ФИО для подписи'}}</td>
                 <td height="75px" style="width: 10%;"></td>
                 <td height="75px" style="width: 10%; border-bottom: 1px solid black; position: relative;">
-                    <div class="signature" style="background-image: url({{ 'public/storage/uploads/' . $customer_file_signature }});"></div>
-                    <div class="stamp" style="background-image: url({{ 'public/storage/uploads/' . $customer_file_stamp }});"></div>
+                    <div class="signature" style="background-image: url({{ asset('storage/uploads/' . $customer_file_signature) }});"></div>
+                    <div class="stamp" style="background-image: url({{ asset('storage/uploads/' . $customer_file_stamp) }});"></div>
                 </td>
                 <td height="75px" style="width: 10%;"></td>
                 <td height="75px" colspan="2" style="width: 10%; border-bottom: 1px solid black;" align="center" valign="bottom">{{ $validated['customer_name'] ?? 'ФИО контрагента для подписи'}}</td>
