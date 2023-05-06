@@ -10,7 +10,7 @@ use Illuminate\Support\Str;
 use Illuminate\Support\Facades\Storage;
 
 /**
- * Генерирует PDF-файл
+ * Генерирует PDF-документ.
  */
 class PDFGenerator
 {
@@ -26,13 +26,13 @@ class PDFGenerator
     public function __construct($html)
     {
         $this->html = $html;
-        $this->file_name = Str::random(10);
+        $this->file_name = Str::random(10) . '.pdf';
     }
 
     /**
      * Build the PDF.
      * 
-     * @return string
+     * @return string 
      */
     public function generate()
     {
@@ -57,8 +57,6 @@ class PDFGenerator
         $file = $dompdf->output();
 
         // сохранение файла на диск
-        Storage::put("/public/pdf/$this->file_name.pdf", $file);
-
-        return $this->file_name;
+        Storage::put("/public/pdf/$this->file_name", $file);
     }
 }

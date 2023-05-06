@@ -5,18 +5,29 @@
 @section('content')
 
 
+
     <div class="container mt-5">
+        
+        @if( session('message') )
+            <div class="alert alert-{{ session('message.type') }} alert-dismissible fade show d-flex align-items-center" role="alert">
+                @if( session('message.type') == 'success' )
+                    <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Success:" style="width: 16px; height: 16px; fill: #75b798;"><use xlink:href="#check-circle-fill"/></svg>
+                @elseif( session('message.type') == 'danger' )
+                    <svg class="bi flex-shrink-0 me-2" role="img" aria-label="Danger:" style="width: 16px; height: 16px; fill: #ea868f;"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                @endif
+                <strong>{{ session('message.text') }}</strong>
+                <button type="button" class="btn-close" data-bs-dismiss="alert" aria-label="Close"></button>
+            </div>
+        @endif
 
         <form class="row g-3" action="{{ route('sendGeneral') }}" enctype="multipart/form-data" method="POST">
 
             @csrf
 
-            <!-- required -->
-
             <h5>Информация о выполненных услугах</h5>
 
             <div class="col-md-4">
-                <label for="services_act_number" class="form-label">Номер акта</label>
+                <label for="services_act_number" class="form-label">Номер акта <span class="required">*</span></label>
                 <input class="@error('services_act_number') is-invalid @enderror form-control" type="text" id="services_act_number" name="services_act_number" value="{{ old('services_act_number') }}">
                 @error('services_act_number')
                     <div id="services_act_number" class="invalid-feedback">{{ $message }}</div>
@@ -24,43 +35,39 @@
             </div>
             
             <div class="col-md-4">
-                <label for="cervices_act_date" class="form-label">Дата документа</label>
-                <input class="@error('cervices_act_date') is-invalid @enderror form-control" type="date" id="cervices_act_date" name="cervices_act_date">
+                <label for="cervices_act_date" class="form-label">Дата документа <span class="required">*</span></label>
+                <input class="@error('cervices_act_date') is-invalid @enderror form-control" type="date" id="cervices_act_date" name="cervices_act_date" value="{{ old('cervices_act_date') }}">
                 @error('cervices_act_date')
                     <div id="cervices_act_date" class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
             
             <div class="col-md-4">
-                <label for="services_executor" class="form-label">Исполнитель</label>
-                <input class="@error('services_executor') is-invalid @enderror form-control" type="text" id="services_executor" name="services_executor">
+                <label for="services_executor" class="form-label">Исполнитель <span class="required">*</span></label>
+                <input class="@error('services_executor') is-invalid @enderror form-control" type="text" id="services_executor" name="services_executor" value="{{ old('services_executor') }}">
                 @error('services_executor')
                     <div id="services_executor" class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
 
-            <!-- Название компании? -->
-            
             <div class="col-md-4">
-                <label for="services_services_name" class="form-label">Наименование услуги</label>
-                <input class="@error('services_services_name') is-invalid @enderror form-control" type="text" id="services_services_name" name="services_services_name">
+                <label for="services_services_name" class="form-label">Наименование услуги <span class="required">*</span></label>
+                <input class="@error('services_services_name') is-invalid @enderror form-control" type="text" id="services_services_name" name="services_services_name" value="{{ old('services_services_name') }}">
                 @error('services_services_name')
                     <div id="services_services_name" class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
 
-            <!-- Сумма цифрами? -->
-            
             <div class="col-md-4">
-                <label for="services_cost" class="form-label">Стоимость работ</label>
-                <input class="@error('services_cost') is-invalid @enderror form-control" type="number" id="services_cost" name="services_cost">
+                <label for="services_cost" class="form-label">Стоимость работ <span class="required">*</span></label>
+                <input class="@error('services_cost') is-invalid @enderror form-control" type="number" id="services_cost" name="services_cost" value="{{ old('services_cost') }}">
                 @error('services_cost')
                     <div id="services_cost" class="invalid-feedback">{{ $message }}</div>
                 @enderror
             </div>
             
             <div class="mb-3">
-                <label for="services_file_logo" class="form-label">Загрузка логотипа компании</label>
+                <label for="services_file_logo" class="form-label">Загрузка логотипа компании <span class="required">*</span></label>
                 <input class="@error('services_file_logo') is-invalid @enderror form-control" type="file" aria-label="logo" id="services_file_logo" name="services_file_logo">
                 @error('services_file_logo')
                     <div id="services_file_logo" class="invalid-feedback">{{ $message }}</div>
@@ -78,7 +85,7 @@
             </div>
             
             <div class="col-md-4">
-                <label for="executor_email" class="form-label">Email исполнителя</label>
+                <label for="executor_email" class="form-label">Email исполнителя <span class="required">*</span></label>
                 <input class="@error('executor_email') is-invalid @enderror form-control" type="email" id="executor_email" name="executor_email">
                 @error('executor_email')
                     <div id="executor_email" class="invalid-feedback">{{ $message }}</div>
@@ -158,7 +165,7 @@
             </div>
             
             <div class="mb-3">
-                <label for="executor_file_signature" class="form-label">Загрузка подписи исполнителя</label>
+                <label for="executor_file_signature" class="form-label">Загрузка подписи исполнителя <span class="required">*</span></label>
                 <input class="@error('executor_file_signature') is-invalid @enderror form-control" type="file" aria-label="logo" id="executor_file_signature" name="executor_file_signature">
                 @error('executor_file_signature')
                     <div id="executor_file_signature" class="invalid-feedback">{{ $message }}</div>
@@ -166,7 +173,7 @@
             </div>
             
             <div class="mb-3">
-                <label for="executor_file_stamp" class="form-label">Загрузка печати исполнителя</label>
+                <label for="executor_file_stamp" class="form-label">Загрузка печати исполнителя <span class="required">*</span></label>
                 <input class="@error('executor_file_stamp') is-invalid @enderror form-control" type="file" aria-label="logo" id="executor_file_stamp" name="executor_file_stamp">
                 @error('executor_file_stamp')
                     <div id="executor_file_stamp" class="invalid-feedback">{{ $message }}</div>
@@ -264,7 +271,7 @@
             </div>
             
             <div class="mb-3">
-                <label for="customer_file_signature" class="form-label">Загрузка подписи заказчика</label>
+                <label for="customer_file_signature" class="form-label">Загрузка подписи заказчика <span class="required">*</span></label>
                 <input class="@error('customer_file_signature') is-invalid @enderror form-control" type="file" aria-label="logo" id="customer_file_signature" name="customer_file_signature">
                 @error('customer_file_signature')
                     <div id="customer_file_signature" class="invalid-feedback">{{ $message }}</div>
@@ -272,7 +279,7 @@
             </div>
             
             <div class="mb-3">
-                <label for="customer_file_stamp" class="form-label">Загрузка печати заказчика</label>
+                <label for="customer_file_stamp" class="form-label">Загрузка печати заказчика <span class="required">*</span></label>
                 <input class="@error('customer_file_stamp') is-invalid @enderror form-control" type="file" aria-label="logo" id="customer_file_stamp" name="customer_file_stamp">
                 @error('customer_file_stamp')
                     <div id="customer_file_stamp" class="invalid-feedback">{{ $message }}</div>
@@ -286,5 +293,11 @@
         </form>
 
     </div>
+
+    <style>
+        .required {
+            color: red;
+        }
+    </style>
 
 @endsection

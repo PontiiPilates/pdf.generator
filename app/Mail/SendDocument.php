@@ -38,6 +38,6 @@ class SendDocument extends Mailable
     public function build()
     {
         $attach = storage_path("app/public/pdf/$this->file_name");
-        return $this->from($this->from_email, $this->title_email)->markdown('email_templates.send_document')->attach($attach);
+        return $this->from($this->from_email, $this->title_email)->markdown('templates.email')->attach($attach);
     }
 }
