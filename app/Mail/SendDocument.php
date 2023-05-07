@@ -11,12 +11,12 @@ class SendDocument extends Mailable
 {
     use Queueable, SerializesModels;
 
-    protected $file_name;
-    protected $title_email;
-    protected $from_email;
+    protected $file_name;   // имя файла
+    protected $title_email; // тема сообщения
+    protected $from_email;  // от кого
 
     /**
-     * Create a new message instance.
+     * Устанавливает значения свойств при создании объекта.
      *
      * @param string $file_name
      * @param string $title_email
@@ -31,13 +31,15 @@ class SendDocument extends Mailable
     }
 
     /**
-     * Build the message.
+     * Собирает сообщение.
      *
      * @return $this
      */
     public function build()
     {
+        // прикрепление сгенерированного PDF-документа
         $attach = storage_path("app/public/pdf/$this->file_name");
+        
         return $this->from($this->from_email, $this->title_email)->markdown('templates.email')->attach($attach);
     }
 }

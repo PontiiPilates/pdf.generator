@@ -70,10 +70,11 @@ class GeneralController extends Controller
 
 
         // отправка PDF-документа на почту
-        $email = $validated['executor_email'];
+        $email = $validated['customer_email'];
         $send = new SendDocument($pdf_file_name, 'Акт об оказании услуг');
         $mail = Mail::to($email)->send($send);
 
+        // создание сообщение о статусе отправки
         if (Mail::failures()) {
             $request->session()->now('message', ['type' => 'danger', 'text' => 'Что-то пошло не так и почту отправить не удалось.']);
         } else {

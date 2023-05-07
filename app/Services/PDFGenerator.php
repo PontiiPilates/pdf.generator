@@ -18,7 +18,7 @@ class PDFGenerator
     public $file_name;
 
     /**
-     * Create a new file instance.
+     * Устанавливает значения свойств при создании объекта.
      * 
      * @param string $html
      * @return mixed
@@ -30,30 +30,29 @@ class PDFGenerator
     }
 
     /**
-     * Build the PDF.
+     * Сборка PDF-файла.
      * 
      * @return string 
      */
     public function generate()
     {
+
+        // создание объекта настроек и его конфигурирование
         $options = new Options();
         $options->set('defaultFont', 'DejaVu Sans');
         $options->set('isRemoteEnabled', TRUE);
 
-        // Instantiate and use the dompdf class
+        // создание объекта PDF-документа
         $dompdf = new Dompdf($options);
         $dompdf->loadHtml($this->html);
 
-        // (Optional) Setup the paper size and orientation
+        // определение портретной ориентации
         $dompdf->setPaper('A4', 'portrait');
 
-        // Render the HTML as PDF
+        // рендер PFD-документа из HTML-документа
         $dompdf->render();
 
-        // Output the generated PDF to Browser
-        // $dompdf->stream();
-
-        // Output the generated PDF to File
+        // вывод результата в файл
         $file = $dompdf->output();
 
         // сохранение файла на диск

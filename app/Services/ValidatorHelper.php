@@ -2,9 +2,16 @@
 
 namespace App\Services;
 
+/**
+ * Хранит в себе конфигурацию валидации.
+ */
 class ValidatorHelper
 {
-    // содержит правила валидации
+    /**
+     * Содержит правила валидации.
+     * 
+     * @return array
+     */
     public static function rules()
     {
         $current_date = date('d-m-Y', time());
@@ -16,7 +23,29 @@ class ValidatorHelper
             'services_executor' => 'required|min:3|max:64',
             'services_services_name' => 'required|min:3|max:64',
             'services_cost' => 'required|numeric',
-            'executor_email' => 'email:rfc,dns',
+            'customer_email' => 'email:rfc,dns',
+
+            'executor_adress' => '',
+            'executor_company_name' => '',
+            'customer_company_name' => '',
+            'executor_inn' => '',
+            'executir_kpp' => '',
+            'customer_inn' => '',
+            'customer_kpp' => '',
+            'executor_adress' => '',
+            'customer_arderss' => '',
+            'executor_payment_account' => '',
+            'customer_payment_account' => '',
+            'executor_correspondent_account' => '',
+            'customer_correspondent_account' => '',
+            'executor_bank' => '',
+            'customer_bank' => '',
+            'executor_bank_bik' => '',
+            'customer_bank_bik' => '',
+            'executor_phone' => '',
+            'customer_bank_phone' => '',
+            'executor_name' => '',
+            'customer_name' => '',
 
             // правила для валидации всех загруженных файлов
             'services_file_logo' => 'required|image|max:3000|file',
@@ -27,7 +56,11 @@ class ValidatorHelper
         ];
     }
 
-    // содержит пользовательские сообщения
+    /**
+     * Cодержит пользовательские сообщения.
+     * 
+     * @return array
+     */
     public static function messages()
     {
         return [

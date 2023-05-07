@@ -20,10 +20,10 @@
 
         <p>Заказчик: <b>{{ $validated['customer_company_name'] ?? 'Название компании'}}</b></p>
 
-        <p>{{ $validated['services_services_name'] ?? 'Наименование услуги' }} — {{ $validated[''] ?? 'Сумма цифрами' }}</p>
+        <p>{{ $validated['services_services_name'] ?? 'Наименование услуги' }} — {{ $validated['services_cost'] ?? 'Сумма цифрами' }}</p>
 
 
-        <p class="mt-5">Общая стоимость выполненных работ, оказанных услуг: {{ $validated['services_cost'] ?? 'Сумма полностью' }}</p>
+        <p class="mt-5">Общая стоимость выполненных работ, оказанных услуг: {{ $validated['services_cost'] ?? 'Сумма прописью' }}</p>
 
         <p>{{ $validated['executor_adress'] ?? 'Адрес почты' }}</p>
 
